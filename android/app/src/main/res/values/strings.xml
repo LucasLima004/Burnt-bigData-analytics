@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">metro</string>
+    <string name="estacoes_proximas">Estacoes proximas</string>
+    <string name="ir_para_onde">Para onde voce deseja ir?</string>
+    <string name="pesquisa_exemplo">Estacao do Barro</string>
+    <string name="icone_pesquisa">lupa pesquisa</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="adicionar"><u>Adicionar</u></string>
+    <string name="resultados_x">Resultados ({x})</string>
+    <string name="nenhum_resultado">Nao encontramos nenhum resultado para sua pesquisa</string>
+    <string name="limpar_pesquisa_u"><u>Limpar Pesquisa</u></string>
+    <string name="icone_favoritos">Icone favoritos</string>
+    <string name="imagem_sua_localizacao">Imagem da sua localizacao</string>
+    <string name="x_e_regiao">{x} e regiao</string>
+    <string name="digite_algo_para_pesquisar">Digite algo para pesquisar</string>
+    <string name="regiao_pernambuco">Pernambuco</string>
+    <string name="estacao">Estacao</string>
+    <string name="linha">Linha</string>
+    <string name="vector">Vector</string>
+</resources>

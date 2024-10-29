@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/principal_2"
+    android:padding="@dimen/padding_padrao">
+    <ImageView
+        android:id="@+id/ivIconeEstacao"
+        android:layout_width="@dimen/icone_padrao"
+        android:layout_height="@dimen/icone_padrao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/tvNomeEstacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/texto_pequeno"
+        app:layout_constraintLeft_toRightOf="@id/ivIconeEstacao"
+        app:layout_constraintTop_toTopOf="@id/ivIconeEstacao"
+        android:text="@string/linha"
+        android:layout_marginLeft="@dimen/padding_padrao"
+        android:textColor="@color/em_principal"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
