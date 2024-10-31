@@ -15,13 +15,15 @@ export class LocalidadeService {
     async getExpectLocale(
         lat: string,
         lon: string,
-        local: string,
+        localLat: string,
+        localLon: string,
         veiculo: VehicleType
     ): Promise<any> {
         const apiKey = this.configService.get<string>('API_KEY'); 
 
         const origin = `${lat},${lon}`; 
-        const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${encodeURIComponent(local)}&mode=${veiculo}&key=${apiKey}`;
+        const destin = `${localLat},${localLon}`; 
+        const url = `https://maps.googleapis.com/maps/api/directions/json?alternatives=true&readius=10000&origin=${origin}&destination=${destin}&mode=transit&transit_mode=${veiculo}&key=${apiKey}`;
     
         try {
             const response = await firstValueFrom(this.httpService.get(url));
