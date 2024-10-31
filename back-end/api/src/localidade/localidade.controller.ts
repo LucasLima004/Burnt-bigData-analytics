@@ -31,6 +31,20 @@ export class LocalidadeController {
         return this.service.getExpectLocale(lat, lon, localLat, localLon, veiculo);
     }
 
+    @Get("station")
+    @ApiResponse({ status: 200, description: 'Data retrieved successfully.' })
+    @ApiResponse({ status: 404, description: 'Data not found.' })
+    @ApiQuery({ name: 'type', required: true, description: 'Localization type' })
+    @ApiQuery({ name: 'localLat', required: true, description: 'Expected latitude destin' })
+    @ApiQuery({ name: 'localLon', required: true, description: 'Expected longitude destin' })
+    async getStation(
+        @Query('type') type: string,
+        @Query('localLat') localLat: string,
+        @Query('localLon') localLon: string,
+    ) {
+        return this.service.getStation(type, localLat, localLon);
+    }
+
     @Get('search')
     @ApiResponse({ status: 200, description: 'Places retrieved successfully.' })
     @ApiResponse({ status: 404, description: 'Places not found.' })

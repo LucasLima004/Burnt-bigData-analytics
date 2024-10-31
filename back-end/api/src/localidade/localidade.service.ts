@@ -33,6 +33,25 @@ export class LocalidadeService {
         }
     }
 
+
+    async getStation(
+        type: string,
+        localLat: string,
+        localLon: string
+    ): Promise<any> {
+        const apiKey = this.configService.get<string>('API_KEY'); 
+
+        const destin = `${localLat},${localLon}`; 
+        const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destin}&radius=1500&type=${type}&key=${apiKey}`;
+    
+        try {
+            const response = await firstValueFrom(this.httpService.get(url));
+            return response.data;
+        } catch (error) {
+            throw new Error('Erro ao buscar localização: ' + error.message);
+        }
+    }
+
     async searchPlaces(location: string): Promise<any> {
         const apiKey = this.configService.get<string>('API_KEY');
         const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(location)}&key=${apiKey}`;
