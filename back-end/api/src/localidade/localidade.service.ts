@@ -23,7 +23,7 @@ export class LocalidadeService {
 
         const origin = `${lat},${lon}`; 
         const destin = `${localLat},${localLon}`; 
-        const url = `https://maps.googleapis.com/maps/api/directions/json?alternatives=true&readius=10000&origin=${origin}&destination=${destin}&mode=transit&transit_mode=${veiculo}&key=${apiKey}`;
+        const url = `https://maps.googleapis.com/maps/api/directions/json?alternatives=true&radius=10000&origin=${origin}&destination=${destin}&mode=transit&transit_mode=${veiculo}&key=${apiKey}`;
     
         try {
             const response = await firstValueFrom(this.httpService.get(url));
