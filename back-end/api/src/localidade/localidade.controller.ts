@@ -13,7 +13,8 @@ export class LocalidadeController {
     @ApiResponse({ status: 404, description: 'Data not found.' })
     @ApiQuery({ name: 'lat', required: true, description: 'Expected latitude' })
     @ApiQuery({ name: 'lon', required: true, description: 'Expected longitude' })
-    @ApiQuery({ name: 'local', required: true, description: 'Expected location' })
+    @ApiQuery({ name: 'localLat', required: true, description: 'Expected latitude destin' })
+    @ApiQuery({ name: 'localLon', required: true, description: 'Expected longitude destin' })
     @ApiQuery({
         name: 'veiculo',
         required: false,
@@ -23,10 +24,25 @@ export class LocalidadeController {
     async getData(
         @Query('lat') lat: string,
         @Query('lon') lon: string,
-        @Query('local') local: string,
+        @Query('localLat') localLat: string,
+        @Query('localLon') localLon: string,
         @Query('veiculo') veiculo: VehicleType
     ) {
-        return this.service.getExpectLocale(lat, lon, local, veiculo);
+        return this.service.getExpectLocale(lat, lon, localLat, localLon, veiculo);
+    }
+
+    @Get("station")
+    @ApiResponse({ status: 200, description: 'Data retrieved successfully.' })
+    @ApiResponse({ status: 404, description: 'Data not found.' })
+    @ApiQuery({ name: 'type', required: true, description: 'Localization type' })
+    @ApiQuery({ name: 'localLat', required: true, description: 'Expected latitude destin' })
+    @ApiQuery({ name: 'localLon', required: true, description: 'Expected longitude destin' })
+    async getStation(
+        @Query('type') type: string,
+        @Query('localLat') localLat: string,
+        @Query('localLon') localLon: string,
+    ) {
+        return this.service.getStation(type, localLat, localLon);
     }
 
     @Get('search')

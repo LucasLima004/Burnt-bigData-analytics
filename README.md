@@ -1,1 +1,1 @@
-# Burnt-bigData-analytics
+# Vector mobile app project
