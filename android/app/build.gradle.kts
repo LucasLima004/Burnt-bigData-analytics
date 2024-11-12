@@ -51,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation("com.android.volley:volley:1.2.1")
+
     implementation("androidx.constraintlayout:constraintlayout:2.2.0-beta01")
     implementation("androidx.recyclerview:recyclerview:1.0.0")
     implementation("androidx.cardview:cardview:1.0.0")

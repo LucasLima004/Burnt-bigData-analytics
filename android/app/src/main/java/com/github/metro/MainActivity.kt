@@ -6,11 +6,14 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.github.metro.constantes.ConstantesExtra
 import com.github.metro.databinding.MainLayoutBinding
+import com.github.metro.viewmodels.MainActivityViewModel
 
 class MainActivity : ComponentActivity() {
     lateinit var binding: MainLayoutBinding
+    lateinit var viewModel: MainActivityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = MainActivityViewModel(this)
         binding = MainLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

@@ -17,4 +17,6 @@
     <string name="estacao">Estacao</string>
     <string name="linha">Linha</string>
     <string name="vector">Vector</string>
+    <string name="nome_local">Nome local</string>
+    <string name="endereco_local">Endereco Local</string>
 </resources>

@@ -81,7 +81,7 @@
                 android:background="@color/em_principal" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvEstacoesProximas"
+                android:id="@+id/rvLocaisPesquisa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
