@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/clLocalPesquisa"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/padding_menor"
     android:background="@color/principal_1"
-    android:layout_marginBottom="@dimen/padding_menor">
+    android:layout_marginBottom="@dimen/padding_menor"
+    android:focusable="true"
+    android:clickable="true">
     <TextView
         android:id="@+id/tvNomeLocal"
         android:layout_width="wrap_content"

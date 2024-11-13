@@ -9,6 +9,7 @@
         android:id="@+id/ivIconeEstacao"
         android:layout_width="@dimen/icone_padrao"
         android:layout_height="@dimen/icone_padrao"
+        android:contentDescription="@string/icone_estacao"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -20,7 +21,7 @@
         app:layout_constraintLeft_toRightOf="@id/ivIconeEstacao"
         app:layout_constraintTop_toTopOf="@id/ivIconeEstacao"
         android:text="@string/linha"
-        android:layout_marginLeft="@dimen/padding_padrao"
+        android:layout_marginStart="@dimen/padding_padrao"
         android:textColor="@color/em_principal"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

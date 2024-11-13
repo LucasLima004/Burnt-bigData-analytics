@@ -1,12 +1,16 @@
 package com.github.metro.recyclerViews
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.metro.RotaPesquisaActivity
+import com.github.metro.constantes.ConstantesExtra
 import com.github.metro.databinding.RvPesquisaLocalizacaoBinding
 import com.github.metro.models.LocalPesquisa
 
-class LocalPesquisaRVAdapter (val locaisPesquisa: List<LocalPesquisa>): RecyclerView.Adapter<LocalPesquisaRVAdapter.ViewHolder>() {
+class LocalPesquisaRVAdapter (val context:Context, val locaisPesquisa: List<LocalPesquisa>): RecyclerView.Adapter<LocalPesquisaRVAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: RvPesquisaLocalizacaoBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -18,6 +22,11 @@ class LocalPesquisaRVAdapter (val locaisPesquisa: List<LocalPesquisa>): Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with (holder) {
             with (locaisPesquisa[position]) {
+                binding.clLocalPesquisa.setOnClickListener {
+                    val intent = Intent(context, RotaPesquisaActivity::class.java)
+                    intent.putExtra(ConstantesExtra.LOCAL_PESQUISA_EXTRA, locaisPesquisa[position])
+                    context.startActivity(intent)
+                }
                 binding.tvNomeLocal.text = this.nome
                 binding.tvEnderecoLocal.text = this.endereco
             }

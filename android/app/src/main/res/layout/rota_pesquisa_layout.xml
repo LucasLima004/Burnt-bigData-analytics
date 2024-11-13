@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/principal_1">
+
+    <TextView
+        android:id="@+id/tvDirecoesPara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_padrao"
+        android:text="@string/direcoes_para"
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_grande"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <TextView
+        android:id="@+id/tvNomeLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_menor"
+        android:text="@string/local"
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_grande"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvDirecoesPara"
+        app:layout_constraintTop_toBottomOf="@+id/tvDirecoesPara" />
+    <TextView
+        android:id="@+id/tvEnderecoLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_menor"
+        android:text="@string/local"
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_pequeno"
+        app:layout_constraintStart_toStartOf="@+id/tvDirecoesPara"
+        app:layout_constraintTop_toBottomOf="@+id/tvNomeLocal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="635dp"
+        android:paddingRight="@dimen/padding_padrao"
+        android:layout_marginTop="@dimen/padding_padrao"
+        android:paddingLeft="@dimen/padding_padrao"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnderecoLocal" />
+</androidx.constraintlayout.widget.ConstraintLayout>

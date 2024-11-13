@@ -67,7 +67,8 @@ class PesquisaActivity: ComponentActivity() {
     }
 
     fun atualizarItensRecyclerView(resultados: ArrayList<LocalPesquisa>) {
-        rvAdapter = LocalPesquisaRVAdapter(resultados)
+        rvAdapter = LocalPesquisaRVAdapter(
+            this, resultados)
         binding.rvLocaisPesquisa.adapter = rvAdapter
     }
 
@@ -85,7 +86,6 @@ class PesquisaActivity: ComponentActivity() {
 
     fun pesquisar() {
         val textoPesquisa = binding.etPesquisa.text.toString()
-        checarSeResultadosForamEncontrados()
 
         val request = JsonArrayRequest(
             Request.Method.GET, "${ConstantesApi.CAMINHO_SEARCH}?location=${textoPesquisa}", null,

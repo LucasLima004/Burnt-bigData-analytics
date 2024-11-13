@@ -35,6 +35,8 @@
         <activity android:name=".PesquisaActivity"
             android:theme="@style/Theme.Metro"
             />
+        <activity android:name=".RotaPesquisaActivity"
+            android:theme="@style/Theme.Metro"/>
     </application>
 
 </manifest>

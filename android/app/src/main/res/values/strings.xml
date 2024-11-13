@@ -19,4 +19,7 @@
     <string name="vector">Vector</string>
     <string name="nome_local">Nome local</string>
     <string name="endereco_local">Endereco Local</string>
+    <string name="direcoes_para">Direções para</string>
+    <string name="local">Local</string>
+    <string name="icone_estacao">icone estacao</string>
 </resources>
