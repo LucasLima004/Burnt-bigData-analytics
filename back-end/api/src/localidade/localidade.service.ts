@@ -42,7 +42,7 @@ export class LocalidadeService {
         const apiKey = this.configService.get<string>('API_KEY'); 
 
         const destin = `${localLat},${localLon}`; 
-        const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destin}&radius=1500&type=${type}&key=${apiKey}`;
+        const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destin}&radius=10000&type=${type}&key=${apiKey}`;
     
         try {
             const response = await firstValueFrom(this.httpService.get(url));
@@ -52,9 +52,11 @@ export class LocalidadeService {
         }
     }
 
-    async searchPlaces(location: string): Promise<any> {
+    async searchPlaces(location: string, lat: string, lon: string): Promise<any> {
         const apiKey = this.configService.get<string>('API_KEY');
-        const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(location)}&key=${apiKey}`;
+        
+        const destin = `${lat},${lon}`;
+        const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(location)}&radius=10000&location=${destin}&key=${apiKey}`;
     
         try {
             const response = await firstValueFrom(this.httpService.get(url));
