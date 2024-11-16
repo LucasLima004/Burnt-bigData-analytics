@@ -10,13 +10,14 @@
         android:id="@+id/tvNomeLocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_padrao"
         android:layout_marginTop="@dimen/padding_padrao"
         android:text="@string/local"
         android:textColor="@color/white"
         android:textSize="@dimen/texto_grande"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="20dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnFavoritar" />
 
     <TextView
         android:id="@+id/tvEnderecoLocal"
@@ -27,6 +28,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/texto_pequeno"
         app:layout_constraintTop_toBottomOf="@+id/tvNomeLocal"
+        app:layout_constraintLeft_toLeftOf="@+id/tvNomeLocal"
         tools:layout_editor_absoluteX="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
