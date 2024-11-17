@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import androidx.lifecycle.lifecycleScope
+import com.github.metro.adapter.db.DataBaseAdapter
+import com.github.metro.adapter.db.LocaleDatabaseProvider
 import com.github.metro.constantes.ConstantesApi
 import com.github.metro.constantes.ConstantesExtra
 import com.github.metro.databinding.RotaPesquisaLayoutBinding
@@ -22,19 +25,44 @@ import com.github.metro.utils.ConexaoVolley
 import com.github.metro.utils.LocalizacaoUtils
 import org.json.JSONException
 import java.util.ArrayList
+import com.github.metro.utils.converters.FavoriteLocaleConvert
+import kotlinx.coroutines.launch
 
 class RotaPesquisaActivity: ComponentActivity() {
     lateinit var binding: RotaPesquisaLayoutBinding
     lateinit var localPesquisa: LocalPesquisa
+
     private lateinit var rvAdapter: LinhaRvAdapter
 //    val resultados = ArrayList()
+
+
+    lateinit var convert: FavoriteLocaleConvert
+    private lateinit var dataBaseAdapter: DataBaseAdapter
+    private lateinit var databaseProvider: LocaleDatabaseProvider
+
+
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = RotaPesquisaLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        convert = FavoriteLocaleConvert()
+        databaseProvider = LocaleDatabaseProvider(applicationContext)
+        val favoriteLocaleDao = databaseProvider.favoriteLocaleDao
+        dataBaseAdapter = DataBaseAdapter(favoriteLocaleDao)
 
         localPesquisa = intent.getSerializableExtra(ConstantesExtra.LOCAL_PESQUISA_EXTRA, LocalPesquisa::class.java)!!
+
+        binding.btnFavoritar.setOnClickListener {
+            lifecycleScope.launch {
+                try {
+                    dataBaseAdapter.insertFavoriteLocal(convert.toFavoriteLocal(localPesquisa))
+                    Log.i("BD", "Finalizou a adição do registro.")
+                } catch (e: Exception) {
+                    Log.e("BD", "Erro na adição do registro: ${e}")
+                }
+            }
+        }
 
         binding.tvNomeLocal.text = localPesquisa.nome
         binding.tvEnderecoLocal.text = localPesquisa.endereco
