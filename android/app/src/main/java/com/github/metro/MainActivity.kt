@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.github.metro.constantes.ConstantesExtra
 import com.github.metro.databinding.MainLayoutBinding
+import com.github.metro.models.LocalPesquisa
 import com.github.metro.viewmodels.MainActivityViewModel
 
 class MainActivity : ComponentActivity() {
@@ -28,5 +29,8 @@ class MainActivity : ComponentActivity() {
             pesquisaActivityIntent.putExtra(ConstantesExtra.VALOR_PESQUISA_EXTRA, textoPesquisa)
             startActivity(pesquisaActivityIntent)
         }
+        val intent = Intent(this, RotaPesquisaActivity::class.java)
+        intent.putExtra(ConstantesExtra.LOCAL_PESQUISA_EXTRA, LocalPesquisa(nome="Centro Universitário Estácio do Recife", lat=-8.062037, lon=-34.9161162, endereco="Av. Eng. Abdias de Carvalho, 1678 - Madalena Recife - PE, 50720-225, Brazil"))
+        startActivity(intent)
     }
 }
