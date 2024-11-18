@@ -13,6 +13,7 @@ import com.github.metro.constantes.ConstantesApi
 import com.github.metro.constantes.ConstantesExtra
 import com.github.metro.databinding.MainLayoutBinding
 import com.github.metro.models.LocalPesquisa
+import com.github.metro.recyclerViews.EstacaoRvAdapter
 import com.github.metro.utils.ConexaoVolley
 import com.github.metro.utils.LocalizacaoUtils
 import com.github.metro.viewmodels.MainActivityViewModel
@@ -20,6 +21,8 @@ import com.github.metro.viewmodels.MainActivityViewModel
 class MainActivity : ComponentActivity() {
     lateinit var binding: MainLayoutBinding
     lateinit var viewModel: MainActivityViewModel
+
+    lateinit var adapter: EstacaoRvAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = MainActivityViewModel(this)
@@ -49,7 +52,8 @@ class MainActivity : ComponentActivity() {
     }
 
     fun mostrarEstacoesProximas(estacoes: ArrayList<LocalPesquisa>) {
-        estacoes
+        adapter = EstacaoRvAdapter(estacoes)
+        binding.rvEstacoesProximas.adapter = adapter
     }
 
     fun pesquisarEstacoesProximas() {
