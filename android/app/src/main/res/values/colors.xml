@@ -11,6 +11,7 @@
     <color name="principal_1">#121212</color>
     <color name="principal_2">#1B1B1B</color>
     <color name="em_principal">#FFFFFF</color>
+    <color name="em_principal_escuro">#E0E0E0</color>
     <color name="link">#439BDA</color>
     <color name="verde">#64A92E</color>
 

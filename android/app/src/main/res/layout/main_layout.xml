@@ -52,7 +52,7 @@
         android:layout_marginStart="@dimen/padding_padrao"
         android:layout_marginTop="@dimen/padding_padrao"
         android:layout_marginEnd="@dimen/padding_padrao"
-        android:layout_marginBottom="@dimen/padding_padrao"
+        android:layout_marginBottom="100dp"
         android:background="@color/principal_1"
         android:backgroundTint="@color/principal_2"
         app:cardCornerRadius="@dimen/raio_padrao"
@@ -97,7 +97,9 @@
         android:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -128,6 +130,11 @@
                 android:textColor="@color/link"
                 android:textSize="@dimen/texto_pequeno" />
         </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
     </LinearLayout>
 
 
@@ -150,6 +157,7 @@
         android:layout_marginStart="@dimen/padding_padrao"
         android:layout_marginTop="@dimen/padding_miudo"
         android:layout_marginEnd="@dimen/padding_padrao"
+        android:layout_marginBottom="80dp"
         android:padding="@dimen/padding_padrao"
         android:visibility="visible"
         app:cardCornerRadius="@dimen/raio_menor"
