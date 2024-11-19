@@ -10,7 +10,7 @@ import com.github.metro.constantes.ConstantesExtra
 import com.github.metro.databinding.RvPesquisaLocalizacaoBinding
 import com.github.metro.models.LocalPesquisa
 
-class LocalPesquisaRVAdapter (val context:Context, val locaisPesquisa: List<LocalPesquisa>): RecyclerView.Adapter<LocalPesquisaRVAdapter.ViewHolder>() {
+class LocalPesquisaRVAdapter (val context:Context, val locaisPesquisa: List<LocalPesquisa>, val localOrigemPesquisa: LocalPesquisa?): RecyclerView.Adapter<LocalPesquisaRVAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: RvPesquisaLocalizacaoBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -25,6 +25,7 @@ class LocalPesquisaRVAdapter (val context:Context, val locaisPesquisa: List<Loca
                 binding.clLocalPesquisa.setOnClickListener {
                     val intent = Intent(context, RotaPesquisaActivity::class.java)
                     intent.putExtra(ConstantesExtra.LOCAL_PESQUISA_EXTRA, locaisPesquisa[position])
+                    intent.putExtra(ConstantesExtra.LOCAL_ORIGEM_PESQUISA_EXTRA, localOrigemPesquisa)
                     context.startActivity(intent)
                 }
                 binding.tvNomeLocal.text = this.nome

@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
     }
 
     fun mostrarEstacoesProximas(estacoes: ArrayList<LocalPesquisa>) {
-        adapter = EstacaoRvAdapter(estacoes)
+        adapter = EstacaoRvAdapter(this, estacoes)
         binding.rvEstacoesProximas.adapter = adapter
     }
 

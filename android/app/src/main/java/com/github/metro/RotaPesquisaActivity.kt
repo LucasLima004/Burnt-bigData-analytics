@@ -20,7 +20,6 @@ import com.github.metro.models.Linha
 import com.github.metro.models.LocalPesquisa
 import com.github.metro.models.Rota
 import com.github.metro.recyclerViews.LinhaRvAdapter
-import com.github.metro.recyclerViews.LocalPesquisaRVAdapter
 import com.github.metro.utils.ConexaoVolley
 import com.github.metro.utils.LocalizacaoUtils
 import org.json.JSONException
@@ -66,9 +65,24 @@ class RotaPesquisaActivity: ComponentActivity() {
 
         binding.tvNomeLocal.text = localPesquisa.nome
         binding.tvEnderecoLocal.text = localPesquisa.endereco
-        val location = LocalizacaoUtils.getLocation(this)
+        val localOrigemPesquisa = intent.getSerializableExtra(ConstantesExtra.LOCAL_ORIGEM_PESQUISA_EXTRA, LocalPesquisa::class.java)
+
+
+        if (localOrigemPesquisa != null) {
+            pesquisarRota(localOrigemPesquisa)
+        } else {
+            val location = LocalizacaoUtils.getLocation(this)!!
+
+            pesquisarRota(LocalPesquisa(
+                nome = "",
+                endereco = "",
+                lat = location.latitude,
+                lon = location.longitude
+            ))
+        }
+
         setupRecyclerViewPesquisa()
-        pesquisarRota(location!!)
+
     }
 
     fun setupRecyclerViewPesquisa() {
@@ -82,8 +96,8 @@ class RotaPesquisaActivity: ComponentActivity() {
         binding.rvRotas.adapter = rvAdapter
     }
 
-    fun pesquisarRota(location: Location) {
-        val url = "${ConstantesApi.CAMINHO_LOCALIDADE}?lat=${location.latitude}&lon=${location.longitude}&localLat=${localPesquisa.lat}&localLon=${localPesquisa.lon}&veiculo=bus"
+    fun pesquisarRota(location: LocalPesquisa) {
+        val url = "${ConstantesApi.CAMINHO_LOCALIDADE}?lat=${location.lat}&lon=${location.lon}&localLat=${localPesquisa.lat}&localLon=${localPesquisa.lon}&veiculo=bus"
         val request = JsonObjectRequest(
             Request.Method.GET, url, null,
             { response ->

@@ -1,5 +1,6 @@
 package com.github.metro
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,6 +27,8 @@ class PesquisaActivity: ComponentActivity() {
     var visibilidadePesquisando = View.GONE
     var visibilidadeNaoEncontrado = View.GONE
     var resultados: ArrayList<LocalPesquisa> = ArrayList()
+
+    var localOrigemPesquisa: LocalPesquisa? = null
 
     private lateinit var rvAdapter: LocalPesquisaRVAdapter
     fun checarSeResultadosForamEncontrados() {
@@ -68,7 +71,7 @@ class PesquisaActivity: ComponentActivity() {
 
     fun atualizarItensRecyclerView(resultados: ArrayList<LocalPesquisa>) {
         rvAdapter = LocalPesquisaRVAdapter(
-            this, resultados)
+            this, resultados, localOrigemPesquisa)
         binding.rvLocaisPesquisa.adapter = rvAdapter
     }
 
@@ -120,10 +123,14 @@ class PesquisaActivity: ComponentActivity() {
             })
         ConexaoVolley.getInstance(this).addToRequestQueue(request)
     }
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = PesquisaLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        localOrigemPesquisa = intent.getSerializableExtra(ConstantesExtra.LOCAL_ORIGEM_PESQUISA_EXTRA, LocalPesquisa::class.java)
 
         val textoPesquisa = intent.getStringExtra(ConstantesExtra.VALOR_PESQUISA_EXTRA)
         if (textoPesquisa == null) {

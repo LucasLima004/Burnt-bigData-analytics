@@ -23,4 +23,6 @@
     <string name="local">Local</string>
     <string name="icone_estacao">icone estacao</string>
     <string name="favoritar">Favoritar</string>
+    <string name="linhas">Linhas</string>
+    <string name="pesquisar_rotas_desta_estacao">Pesquisar rotas desta estação</string>
 </resources>
