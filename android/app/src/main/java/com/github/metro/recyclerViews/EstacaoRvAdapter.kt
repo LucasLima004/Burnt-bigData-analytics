@@ -15,7 +15,7 @@ class EstacaoRvAdapter(val contexto: Context, val estacoes: ArrayList<LocalPesqu
     inner class ViewHolder(val binding: RvTerminalLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RvTerminalLayoutBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = RvTerminalLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

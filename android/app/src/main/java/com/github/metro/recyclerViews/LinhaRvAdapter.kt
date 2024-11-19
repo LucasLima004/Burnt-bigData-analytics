@@ -12,7 +12,7 @@ class LinhaRvAdapter(val rotas: ArrayList<Rota>): RecyclerView.Adapter<LinhaRvAd
     inner class ViewHolder(val binding: RvRotaPesquisaBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LinhaRvAdapter.ViewHolder  {
-        val binding = RvRotaPesquisaBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = RvRotaPesquisaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

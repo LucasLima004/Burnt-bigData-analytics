@@ -15,7 +15,7 @@ class LocalPesquisaRVAdapter (val context:Context, val locaisPesquisa: List<Loca
     inner class ViewHolder(val binding: RvPesquisaLocalizacaoBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RvPesquisaLocalizacaoBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = RvPesquisaLocalizacaoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

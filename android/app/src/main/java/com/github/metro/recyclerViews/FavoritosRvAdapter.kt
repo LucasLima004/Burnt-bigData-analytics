@@ -14,7 +14,7 @@ class FavoritosRvAdapter(val favoritos: List<FavoriteLocal>): RecyclerView.Adapt
     inner class ViewHolder(val binding: RvFavoritosBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RvFavoritosBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = RvFavoritosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
