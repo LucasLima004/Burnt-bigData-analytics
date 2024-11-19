@@ -39,8 +39,16 @@
         android:text="@string/endereco_local"
         android:textColor="@color/em_principal_escuro"
         android:textSize="@dimen/texto_pequeno"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivIconeFavoritos"
         app:layout_constraintTop_toBottomOf="@+id/tvNomeLocal"/>
+    <Button
+        android:id="@+id/btnRemover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvEnderecoLocal"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Remover"
+        android:layout_marginEnd="@dimen/padding_padrao"
+        android:layout_marginBottom="@dimen/padding_padrao"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
