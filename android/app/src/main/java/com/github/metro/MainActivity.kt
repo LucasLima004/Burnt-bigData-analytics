@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
     }
 
     fun mostrarFavoritos(favoritos: List<FavoriteLocal>) {
-        binding.rvFavoritos.adapter = FavoritosRvAdapter(favoritos)
+        binding.rvFavoritos.adapter = FavoritosRvAdapter(this, favoritos)
     }
 
     fun adquirirFavoritos() {
