@@ -17,6 +17,7 @@ import com.github.metro.databinding.PesquisaLayoutBinding
 import com.github.metro.models.LocalPesquisa
 import com.github.metro.recyclerViews.LocalPesquisaRVAdapter
 import com.github.metro.utils.ConexaoVolley
+import com.github.metro.utils.LocalizacaoUtils
 import org.json.JSONArray
 
 class PesquisaActivity: ComponentActivity() {
@@ -88,10 +89,22 @@ class PesquisaActivity: ComponentActivity() {
     }
 
     fun pesquisar() {
+        var lat: Double
+        var lon: Double
+        val localOrigemPesquisa = localOrigemPesquisa
+        if (localOrigemPesquisa != null) {
+            lat = localOrigemPesquisa.lat
+            lon = localOrigemPesquisa.lon
+        } else {
+            val localizacao = LocalizacaoUtils.getLocation(this)!!
+            lat = localizacao.latitude
+            lon = localizacao.longitude
+        }
+
         val textoPesquisa = binding.etPesquisa.text.toString()
 
         val request = JsonArrayRequest(
-            Request.Method.GET, "${ConstantesApi.CAMINHO_SEARCH}?location=${textoPesquisa}", null,
+            Request.Method.GET, "${ConstantesApi.CAMINHO_SEARCH}?location=${textoPesquisa}&lat=${lat}&lon=${lon}", null,
             { response ->
                 Log.d("resposta html",response.toString())
                 resultados.clear()

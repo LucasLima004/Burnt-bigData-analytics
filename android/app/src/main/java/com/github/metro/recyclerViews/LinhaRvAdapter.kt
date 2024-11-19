@@ -19,7 +19,8 @@ class LinhaRvAdapter(val rotas: ArrayList<Rota>): RecyclerView.Adapter<LinhaRvAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with (holder) {
             with (rotas[position]) {
-                binding.tvLinhas.text = this.linhas.joinToString {
+                binding.tvNumeroLinhas.text = "Rota ${position+1}"
+                binding.tvLinha.text = this.linhas.joinToString {
                     linha ->
                     return@joinToString "\n" + linha.nome + " (" + linha.codigo + ")"
                 }

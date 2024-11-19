@@ -4,6 +4,7 @@ import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -91,6 +92,14 @@ class RotaPesquisaActivity: ComponentActivity() {
 
 
     fun mostrarRotas(rotas: ArrayList<Rota>) {
+        if (rotas.size > 0 && rotas[0].linhas.size === 0) {
+            binding.tvNenhumaRotaEncontrada.visibility = View.VISIBLE
+            binding.rvRotas.visibility = View.GONE
+            return
+        }
+        binding.tvNenhumaRotaEncontrada.visibility = View.GONE
+        binding.rvRotas.visibility = View.VISIBLE
+
         rvAdapter = LinhaRvAdapter(rotas)
         binding.rvRotas.adapter = rvAdapter
     }

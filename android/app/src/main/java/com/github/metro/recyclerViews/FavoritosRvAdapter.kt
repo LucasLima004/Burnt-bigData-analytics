@@ -32,7 +32,7 @@ class FavoritosRvAdapter(val contexto: Context, val favoritos: List<FavoriteLoca
                 binding.tvEnderecoLocal.text = this.endereco
                 binding.clFavorito.setOnClickListener {
                     val intent = Intent(contexto, RotaPesquisaActivity::class.java)
-                    intent.putExtra(ConstantesExtra.VALOR_PESQUISA_EXTRA, FavoriteLocaleConvert.toLocalPesquisa(this))
+                    intent.putExtra(ConstantesExtra.LOCAL_PESQUISA_EXTRA, FavoriteLocaleConvert.toLocalPesquisa(this))
                     contexto.startActivity(intent)
                 }
             }

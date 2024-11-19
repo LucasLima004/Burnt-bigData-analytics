@@ -4,14 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/principal_c_1">
+    android:paddingTop="@dimen/padding_padrao">
 
     <TextView
-        android:id="@+id/tvLinhas"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/tvNumeroLinhas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Linha 1"
+        android:textStyle="bold"
+        android:textColor="@color/em_principal"
+        />
+    <TextView
+        android:id="@+id/tvLinha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/em_principal"/>
+        app:layout_constraintStart_toStartOf="@id/tvNumeroLinhas"
+        app:layout_constraintTop_toBottomOf="@id/tvNumeroLinhas"
+        android:textColor="@color/em_principal"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

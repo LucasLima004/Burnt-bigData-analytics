@@ -25,4 +25,5 @@
     <string name="favoritar">Favoritar</string>
     <string name="linhas">Linhas</string>
     <string name="pesquisar_rotas_desta_estacao">Pesquisar rotas a partir desta estação</string>
+    <string name="nenhuma_rota_encontrada">Nenhuma rota encontrada :(</string>
 </resources>
