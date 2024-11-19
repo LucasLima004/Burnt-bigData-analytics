@@ -53,8 +53,8 @@ export class LocalidadeController {
     @ApiQuery({ name: 'lon', required: true, description: 'Expected longitude origin.' })
     async searchPlaces(
         @Query('location') location: string,
-        @Query('location') lat: string,
-        @Query('location') lon: string
+        @Query('lat') lat: string,
+        @Query('lon') lon: string
     ) {
       return this.service.searchPlaces(location, lat, lon);
     }
