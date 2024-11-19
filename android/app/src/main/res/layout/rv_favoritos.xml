@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/principal_1"
+    android:id="@+id/clFavorito"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/ivIconeFavoritos"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+
+        android:layout_margin="@dimen/padding_padrao"
+        android:src="@drawable/pindrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNomeLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_padrao"
+        android:text="@string/nome_local"
+        android:textColor="@color/em_principal"
+        android:textSize="@dimen/texto_medio"
+        app:layout_constraintStart_toEndOf="@id/ivIconeFavoritos"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvEnderecoLocal"/>
+
+    <TextView
+        android:id="@+id/tvEnderecoLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_padrao"
+        android:text="@string/endereco_local"
+        android:textColor="@color/em_principal_escuro"
+        android:textSize="@dimen/texto_pequeno"
+        app:layout_constraintStart_toEndOf="@id/ivIconeFavoritos"
+        app:layout_constraintTop_toBottomOf="@+id/tvNomeLocal"/>
+    <Button
+        android:id="@+id/btnRemover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvEnderecoLocal"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Remover"
+        android:layout_marginEnd="@dimen/padding_padrao"
+        android:layout_marginBottom="@dimen/padding_padrao"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

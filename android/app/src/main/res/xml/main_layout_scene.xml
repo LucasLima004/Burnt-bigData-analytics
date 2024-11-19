@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <ConstraintSet android:id="@+id/csFavoritoInicio" >
+        <Constraint
+            android:id="@+id/llFavoritos"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="@color/principal_2"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="80dp"
+            android:layout_marginEnd="@dimen/padding_padrao"
+            motion:layout_constraintTop_toBottomOf="@+id/cvPesquisa"
+            android:layout_marginStart="@dimen/padding_padrao"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/padding_padrao"
+            android:id="@+id/cardView" />
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/csFavoritoFinal" >
+        <Constraint
+            android:id="@+id/llFavoritos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="300dp"
+            android:background="@color/principal_2"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/csFavoritoInicio"
+        motion:constraintSetEnd="@+id/csFavoritoFinal"
+        motion:duration="300"
+        >
+        <OnClick
+            motion:targetId="@+id/llFavoritos"
+            motion:clickAction="toggle"
+            />
+    </Transition>
+</MotionScene>

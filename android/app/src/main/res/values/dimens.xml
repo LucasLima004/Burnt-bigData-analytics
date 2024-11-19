@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_maior">24dp</dimen>
+    <dimen name="padding_padrao">20dp</dimen>
+
+    <dimen name="texto_enorme">32sp</dimen>
+    <dimen name="texto_grande">24sp</dimen>
+    <dimen name="texto_medio">20sp</dimen>
+    <dimen name="texto_pequeno">16sp</dimen>
+
+    <dimen name="raio_padrao">12dp</dimen>
+    <dimen name="raio_menor">6dp</dimen>
+
+
+    <dimen name="padding_menor">10dp</dimen>
+    <dimen name="padding_miudo">5dp</dimen>
+    <dimen name="icone_pequeno">24dp</dimen>
+    <dimen name="padding_medio">15dp</dimen>
+    <dimen name="icone_padrao">32dp</dimen>
+
+</resources>

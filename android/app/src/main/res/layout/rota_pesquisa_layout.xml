@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/principal_1">
+
+    <TextView
+        android:id="@+id/tvNomeLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_padrao"
+        android:layout_marginTop="@dimen/padding_padrao"
+        android:text="@string/local"
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_grande"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnFavoritar" />
+
+    <TextView
+        android:id="@+id/tvEnderecoLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_menor"
+        android:text="@string/local"
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_pequeno"
+        app:layout_constraintTop_toBottomOf="@+id/tvNomeLocal"
+        app:layout_constraintLeft_toLeftOf="@+id/tvNomeLocal"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <TextView
+        android:id="@+id/tvNenhumaRotaEncontrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_menor"
+        android:text="@string/nenhuma_rota_encontrada"
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_pequeno"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnderecoLocal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="20dp"
+
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRotas"
+        android:layout_width="409dp"
+        android:layout_height="635dp"
+        android:layout_marginTop="@dimen/padding_padrao"
+        android:paddingLeft="@dimen/padding_padrao"
+        android:paddingRight="@dimen/padding_padrao"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnderecoLocal" />
+
+    <Button
+        android:id="@+id/btnFavoritar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_padrao"
+        android:layout_marginEnd="@dimen/padding_padrao"
+        android:text="@string/favoritar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
