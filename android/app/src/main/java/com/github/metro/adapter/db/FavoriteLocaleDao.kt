@@ -15,6 +15,9 @@ interface FavoriteLocaleDao {
     @Query("SELECT * FROM favorite_locale")
     suspend fun getAllFavoriteLocale(): List<FavoriteLocal>
 
+    @Query("SELECT * FROM favorite_locale WHERE lat = :lat AND lon = :lon")
+    suspend fun getFavoriteLocaleLonLat(lat: Double, lon: Double): List<FavoriteLocal>
+
     @Query("SELECT * FROM favorite_locale WHERE id = :id")
     suspend fun getFavoriteLocaleById(id: Int): FavoriteLocal?
 

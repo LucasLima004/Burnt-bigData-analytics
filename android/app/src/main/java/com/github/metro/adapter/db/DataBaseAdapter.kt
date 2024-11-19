@@ -6,7 +6,8 @@ import com.github.metro.utils.exception.FavoriteLocaleNotFoundException
 
 class DataBaseAdapter(private val favoriteLocaleDao: FavoriteLocaleDao) : DataBasePort {
     override suspend fun insertFavoriteLocal(favoriteLocal: FavoriteLocal) {
-        favoriteLocaleDao.insertFavoriteLocale(favoriteLocal)
+        favoriteLocaleDao.getFavoriteLocaleLonLat(favoriteLocal.lat, favoriteLocal.lon)
+            .isEmpty().apply { favoriteLocaleDao.insertFavoriteLocale(favoriteLocal) }
     }
 
     override suspend fun getAllFavoriteLocale(): List<FavoriteLocal> {
