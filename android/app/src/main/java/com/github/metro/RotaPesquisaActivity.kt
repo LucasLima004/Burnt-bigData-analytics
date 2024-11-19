@@ -35,7 +35,6 @@ class RotaPesquisaActivity: ComponentActivity() {
 //    val resultados = ArrayList()
 
 
-    lateinit var convert: FavoriteLocaleConvert
     private lateinit var dataBaseAdapter: DataBaseAdapter
     private lateinit var databaseProvider: LocaleDatabaseProvider
 
@@ -45,7 +44,6 @@ class RotaPesquisaActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         binding = RotaPesquisaLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        convert = FavoriteLocaleConvert()
         databaseProvider = LocaleDatabaseProvider(applicationContext)
         val favoriteLocaleDao = databaseProvider.favoriteLocaleDao
         dataBaseAdapter = DataBaseAdapter(favoriteLocaleDao)
@@ -55,7 +53,7 @@ class RotaPesquisaActivity: ComponentActivity() {
         binding.btnFavoritar.setOnClickListener {
             lifecycleScope.launch {
                 try {
-                    dataBaseAdapter.insertFavoriteLocal(convert.toFavoriteLocal(localPesquisa))
+                    dataBaseAdapter.insertFavoriteLocal(FavoriteLocaleConvert.toFavoriteLocal(localPesquisa))
                     Log.i("BD", "Finalizou a adição do registro.")
                 } catch (e: Exception) {
                     Log.e("BD", "Erro na adição do registro: ${e}")
@@ -73,7 +71,8 @@ class RotaPesquisaActivity: ComponentActivity() {
         } else {
             val location = LocalizacaoUtils.getLocation(this)!!
 
-            pesquisarRota(LocalPesquisa(
+            pesquisarRota(
+                LocalPesquisa(
                 nome = "",
                 endereco = "",
                 lat = location.latitude,
