@@ -5,20 +5,30 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
+import com.github.metro.adapter.db.DataBaseAdapter
+import com.github.metro.adapter.db.LocaleDatabaseProvider
 import com.github.metro.constantes.ConstantesApi
 import com.github.metro.constantes.ConstantesExtra
 import com.github.metro.databinding.MainLayoutBinding
+import com.github.metro.models.FavoriteLocal
 import com.github.metro.models.LocalPesquisa
 import com.github.metro.recyclerViews.EstacaoRvAdapter
+import com.github.metro.recyclerViews.FavoritosRvAdapter
 import com.github.metro.utils.ConexaoVolley
 import com.github.metro.utils.LocalizacaoUtils
+import com.github.metro.utils.converters.FavoriteLocaleConvert
 import com.github.metro.viewmodels.MainActivityViewModel
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+    private lateinit var dataBaseAdapter: DataBaseAdapter
+    private lateinit var databaseProvider: LocaleDatabaseProvider
+    private lateinit var convert: FavoriteLocaleConvert
     lateinit var binding: MainLayoutBinding
     lateinit var viewModel: MainActivityViewModel
 
@@ -29,6 +39,11 @@ class MainActivity : ComponentActivity() {
         binding = MainLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        convert = FavoriteLocaleConvert()
+        databaseProvider = LocaleDatabaseProvider(applicationContext)
+        val favoriteLocaleDao = databaseProvider.favoriteLocaleDao
+        dataBaseAdapter = DataBaseAdapter(favoriteLocaleDao)
+        
         binding.btnPesquisar.setOnClickListener {
             val textoPesquisa = binding.etPesquisa.text.toString()
             if (textoPesquisa.isEmpty()) {
@@ -45,6 +60,12 @@ class MainActivity : ComponentActivity() {
 //        startActivity(intent)
         setupRvEstacoesProximas()
         pesquisarEstacoesProximas()
+        setupRvFavoritos()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adquirirFavoritos()
     }
 
     fun setupRvEstacoesProximas() {
@@ -54,6 +75,24 @@ class MainActivity : ComponentActivity() {
     fun mostrarEstacoesProximas(estacoes: ArrayList<LocalPesquisa>) {
         adapter = EstacaoRvAdapter(this, estacoes)
         binding.rvEstacoesProximas.adapter = adapter
+    }
+
+    fun setupRvFavoritos() {
+        binding.rvFavoritos.layoutManager = LinearLayoutManager(this)
+    }
+
+    fun mostrarFavoritos(favoritos: List<FavoriteLocal>) {
+        binding.rvFavoritos.adapter = FavoritosRvAdapter(favoritos)
+    }
+
+    fun adquirirFavoritos() {
+        lifecycleScope.launch {
+            try {
+                mostrarFavoritos(dataBaseAdapter.getAllFavoriteLocale())
+            } catch (e: Exception) {
+                Log.e("BD", "Erro na adição do registro: ${e}")
+            }
+        }
     }
 
     fun pesquisarEstacoesProximas() {
